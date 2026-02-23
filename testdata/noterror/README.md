@@ -64,6 +64,8 @@ If there is any problem, please feel free to open a new issue.
 | .cx | [google.cx](cx_google.cx) | [google.cx](cx_google.cx.json) | √ |
 | .cymru | [cgi.cymru](cymru_cgi.cymru) | [cgi.cymru](cymru_cgi.cymru.json) | √ |
 | .cymru | [google.cymru](cymru_google.cymru) | [google.cymru](cymru_google.cymru.json) | √ |
+| .cz | [alza.cz](cz_alza.cz) | [alza.cz](cz_alza.cz.json) | √ |
+| .cz | [google.cz](cz_google.cz) | [google.cz](cz_google.cz.json) | √ |
 | .de | [git.de](de_git.de) | [git.de](de_git.de.json) | √ |
 | .de | [google.de](de_google.de) | [google.de](de_google.de.json) | √ |
 | .dk | [emilstahl.dk](dk_emilstahl.dk) | [emilstahl.dk](dk_emilstahl.dk.json) | √ |

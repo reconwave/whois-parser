@@ -1,0 +1,53 @@
+domain: alza.cz
+Registrant ID: A24CONTACT-21175104449
+admin-c: A24CONTACT-21175104449
+nsset: ALZA-CF
+keyset: AUTO-M8OY8C1Z4Q4MJDEUMIV17HFUY
+registrar: REG-WEBGLOBE
+registered: 08.03.2004 20:20:00
+changed: 15.09.2023 16:32:26
+expire: 08.03.2027
+Registrant ID: A24CONTACT-21175104449
+Administrative ID: A24CONTACT-21175104449
+Registrant org: Alza.cz a.s.
+Administrative org: Alza.cz a.s.
+Registrant name: IP Manager
+Administrative name: IP Manager
+Registrant address: Jankovcova 1522/53
+Administrative address: Jankovcova 1522/53
+Registrant address: Praha 7
+Administrative address: Praha 7
+Registrant address: 17000
+Administrative address: 17000
+Registrant address: CZ
+Administrative address: CZ
+Registrant e-mail: domains@alza.cz
+Administrative e-mail: domains@alza.cz
+Registrant registrar: REG-WEBGLOBE
+Administrative registrar: REG-WEBGLOBE
+Registrant created: 24.06.2021 11:54:29
+Administrative created: 24.06.2021 11:54:29
+Registrant changed: 07.01.2025 12:36:29
+Administrative changed: 07.01.2025 12:36:29
+nsset: ALZA-CF
+nserver: beau.ns.cloudflare.com
+nserver: gigi.ns.cloudflare.com
+tech-c: A24CONTACT-21175104449
+registrar: REG-ACTIVE24
+created: 20.12.2021 08:22:50
+changed: 11.12.2024 12:42:33
+keyset: AUTO-M8OY8C1Z4Q4MJDEUMIV17HFUY
+dnskey: 257 3 13 mdsswUyr3DPW132mOi8V9xESWE8jTo0dxCjjnopKl+GqJxpVXckHAeF+KkxLbxILfDLUT0rAK9iUzy1L53eKGQ==
+tech-c: CZNIC-AKM
+registrar: REG-CZNIC
+created: 12.01.2022 15:00:48
+changed: 12.02.2025 15:59:04
+Technical ID: CZNIC-AKM
+Technical org: CZ.NIC, z.s.p.o.
+Technical name: CZ.NIC, z.s.p.o.
+Technical address: Milesovska 1136/5
+Technical address: Praha 3
+Technical address: 13000
+Technical address: CZ
+Technical registrar: REG-CZNIC
+Technical created: 12.08.2024 15:02:38

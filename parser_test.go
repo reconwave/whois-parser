@@ -111,13 +111,13 @@ func TestParse(t *testing.T) {
 
 		if !assert.IsContains([]string{"", "at", "aq", "br", "ch", "de", "edu", "eu", "fr", "gg", "gov", "hk",
 			"hm", "int", "it", "jp", "kr", "kz", "mo", "nl", "nz", "pl", "pm", "re", "ro", "ru", "su", "tf", "ee",
-			"tk", "travel", "tv", "tw", "uk", "wf", "yt", "ir", "fi", "rs", "dk", "by", "ua",
+			"tk", "travel", "tv", "tw", "uk", "wf", "yt", "ir", "fi", "rs", "dk", "by", "ua", "cz",
 			"xn--mgba3a4f16a", "xn--p1ai", "se", "sk", "nu", "hu"}, extension) {
 			assert.NotZero(t, whoisInfo.Domain.ID)
 		}
 
 		if !assert.IsContains([]string{"at", "ch", "edu", "eu", "int", "kr", "mo", "tw", "ir", "pl", "tk", "by",
-			"xn--mgba3a4f16a", "hu"}, extension) {
+			"xn--mgba3a4f16a", "hu", "cz"}, extension) {
 			assert.NotZero(t, whoisInfo.Domain.Status)
 		}
 
@@ -132,7 +132,7 @@ func TestParse(t *testing.T) {
 			"co", "cymru", "de", "edu", "eu", "fr", "gg", "gov", "hk", "hm", "in", "int", "it", "jp", "kr",
 			"la", "london", "me", "mo", "museum", "name", "nl", "nz", "pm", "re", "ro", "ru", "sh", "sk",
 			"kz", "su", "tel", "ee", "tf", "tk", "travel", "tw", "uk", "us", "wales", "wf", "xxx",
-			"yt", "ir", "fi", "rs", "dk", "by", "ua", "xn--mgba3a4f16a", "xn--fiqs8s", "xn--p1ai",
+			"yt", "ir", "fi", "rs", "dk", "by", "ua", "cz", "xn--mgba3a4f16a", "xn--fiqs8s", "xn--p1ai",
 			"se", "nu", "hu"}, extension) {
 			assert.NotZero(t, whoisInfo.Domain.WhoisServer)
 		}
@@ -170,7 +170,7 @@ func TestParse(t *testing.T) {
 		if !assert.IsContains([]string{"", "ai", "at", "aq", "au", "br", "ca", "ch", "cn", "cx", "de",
 			"edu", "eu", "fr", "gg", "gov", "gs", "hk", "hm", "int", "it", "jp", "kr", "kz", "la", "mo", "nl",
 			"nz", "pl", "pm", "re", "ro", "ru", "su", "sk", "tf", "tk", "tw", "uk", "wf", "yt", "ir", "fi", "rs",
-			"ee", "dk", "by", "ua", "xn--mgba3a4f16a", "xn--fiqs8s", "xn--p1ai", "se", "nu", "hu"}, extension) {
+			"ee", "dk", "by", "ua", "cz", "xn--mgba3a4f16a", "xn--fiqs8s", "xn--p1ai", "se", "nu", "hu"}, extension) {
 			assert.NotZero(t, whoisInfo.Registrar.ID)
 		}
 
@@ -181,7 +181,7 @@ func TestParse(t *testing.T) {
 
 		if !assert.IsContains([]string{"", "aero", "ai", "at", "aq", "asia", "au", "br", "ch", "cn", "de",
 			"edu", "gov", "hk", "hm", "int", "jp", "kr", "kz", "la", "london", "love", "mo",
-			"museum", "name", "nl", "nz", "pl", "ru", "sk", "su", "tk", "top", "ir", "fi", "rs", "dk", "by", "ua",
+			"museum", "name", "nl", "nz", "pl", "ru", "sk", "su", "tk", "top", "ir", "fi", "rs", "dk", "by", "ua", "cz",
 			"xn--mgba3a4f16a", "xn--fiqs8s", "xn--p1ai", "se", "nu", "hu"}, extension) {
 			assert.NotZero(t, whoisInfo.Registrar.ReferralURL)
 		}
@@ -219,6 +219,76 @@ func TestParse(t *testing.T) {
 
 	err = xfile.WriteText(noterrorDir+"/README.md", strings.TrimSpace(verified))
 	assert.Nil(t, err)
+}
+
+func TestParseCZ(t *testing.T) {
+	tests := []struct {
+		fixture                string
+		domain                 string
+		registrar              string
+		registrantID           string
+		registrantName         string
+		registrantOrganization string
+		registrantEmail        string
+		administrativeID       string
+		technicalID            string
+		technicalName          string
+	}{
+		{
+			fixture:                "cz_alza.cz",
+			domain:                 "alza.cz",
+			registrar:              "REG-WEBGLOBE",
+			registrantID:           "A24CONTACT-21175104449",
+			registrantName:         "IP Manager",
+			registrantOrganization: "Alza.cz a.s.",
+			registrantEmail:        "domains@alza.cz",
+			administrativeID:       "A24CONTACT-21175104449",
+			technicalID:            "CZNIC-AKM",
+			technicalName:          "CZ.NIC, z.s.p.o.",
+		},
+		{
+			fixture:                "cz_google.cz",
+			domain:                 "google.cz",
+			registrar:              "REG-MARKMONITOR",
+			registrantID:           "MM1171195",
+			registrantName:         "Domain Administrator",
+			registrantOrganization: "Google LLC",
+			administrativeID:       "MM1171195",
+			technicalID:            "MM193020",
+			technicalName:          "Domain Provisioning",
+		},
+	}
+
+	for _, test := range tests {
+		whoisRaw, err := xfile.ReadText(noterrorDir + "/" + test.fixture)
+		assert.Nil(t, err)
+
+		whoisInfo, err := Parse(whoisRaw)
+		assert.Nil(t, err)
+
+		assert.Equal(t, whoisInfo.Domain.Punycode, test.domain)
+		assert.Equal(t, whoisInfo.Domain.Extension, "cz")
+		assert.NotZero(t, whoisInfo.Domain.NameServers)
+		assert.NotZero(t, whoisInfo.Domain.CreatedDate)
+		assert.NotZero(t, whoisInfo.Domain.UpdatedDate)
+		assert.NotZero(t, whoisInfo.Domain.ExpirationDate)
+
+		assert.NotNil(t, whoisInfo.Registrar)
+		assert.Equal(t, whoisInfo.Registrar.Name, test.registrar)
+
+		assert.NotNil(t, whoisInfo.Registrant)
+		assert.Equal(t, whoisInfo.Registrant.ID, test.registrantID)
+		assert.Equal(t, whoisInfo.Registrant.Name, test.registrantName)
+		assert.Equal(t, whoisInfo.Registrant.Organization, test.registrantOrganization)
+		assert.Equal(t, whoisInfo.Registrant.Email, test.registrantEmail)
+
+		assert.NotNil(t, whoisInfo.Administrative)
+		assert.Equal(t, whoisInfo.Administrative.ID, test.administrativeID)
+
+		assert.NotNil(t, whoisInfo.Technical)
+		assert.Equal(t, whoisInfo.Technical.ID, test.technicalID)
+		assert.Equal(t, whoisInfo.Technical.Name, test.technicalName)
+	}
 }
 
 func TestAssearchDomain(t *testing.T) {

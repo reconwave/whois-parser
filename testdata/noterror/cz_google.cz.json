@@ -1,0 +1,41 @@
+{
+    "domain": {
+        "domain": "google.cz",
+        "punycode": "google.cz",
+        "name": "google",
+        "extension": "cz",
+        "name_servers": [
+            "ns2.google.com",
+            "ns4.google.com",
+            "ns3.google.com",
+            "ns1.google.com"
+        ],
+        "created_date": "21.07.2000 15:21:00",
+        "created_date_in_time": "2000-07-21T15:21:00Z",
+        "updated_date": "23.04.2018 20:24:01",
+        "updated_date_in_time": "2018-04-23T20:24:01Z",
+        "expiration_date": "22.07.2026",
+        "expiration_date_in_time": "2026-07-22T00:00:00Z"
+    },
+    "registrar": {
+        "name": "REG-MARKMONITOR"
+    },
+    "registrant": {
+        "id": "MM1171195",
+        "name": "Domain Administrator",
+        "organization": "Google LLC",
+        "street": "1600 Amphitheatre Parkway, Mountain View, 94043, CA, US"
+    },
+    "administrative": {
+        "id": "MM1171195",
+        "name": "Domain Administrator",
+        "organization": "Google LLC",
+        "street": "1600 Amphitheatre Parkway, Mountain View, 94043, CA, US"
+    },
+    "technical": {
+        "id": "MM193020",
+        "name": "Domain Provisioning",
+        "organization": "MarkMonitor Inc.",
+        "street": "2150 S Bonito Way, Suite 150, Meridian, 83642, ID, US"
+    }
+}

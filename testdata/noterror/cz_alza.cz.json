@@ -1,0 +1,41 @@
+{
+    "domain": {
+        "domain": "alza.cz",
+        "punycode": "alza.cz",
+        "name": "alza",
+        "extension": "cz",
+        "name_servers": [
+            "beau.ns.cloudflare.com",
+            "gigi.ns.cloudflare.com"
+        ],
+        "created_date": "08.03.2004 20:20:00",
+        "created_date_in_time": "2004-03-08T20:20:00Z",
+        "updated_date": "15.09.2023 16:32:26",
+        "updated_date_in_time": "2023-09-15T16:32:26Z",
+        "expiration_date": "08.03.2027",
+        "expiration_date_in_time": "2027-03-08T00:00:00Z"
+    },
+    "registrar": {
+        "name": "REG-WEBGLOBE"
+    },
+    "registrant": {
+        "id": "A24CONTACT-21175104449",
+        "name": "IP Manager",
+        "organization": "Alza.cz a.s.",
+        "street": "Jankovcova 1522/53, Praha 7, 17000, CZ",
+        "email": "domains@alza.cz"
+    },
+    "administrative": {
+        "id": "A24CONTACT-21175104449",
+        "name": "IP Manager",
+        "organization": "Alza.cz a.s.",
+        "street": "Jankovcova 1522/53, Praha 7, 17000, CZ",
+        "email": "domains@alza.cz"
+    },
+    "technical": {
+        "id": "CZNIC-AKM",
+        "name": "CZ.NIC, z.s.p.o.",
+        "organization": "CZ.NIC, z.s.p.o.",
+        "street": "Milesovska 1136/5, Praha 3, 13000, CZ"
+    }
+}

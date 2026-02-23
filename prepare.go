@@ -96,6 +96,8 @@ func Prepare(text, ext string) (string, bool) { //nolint:cyclop
 		return prepareAT(text), true
 	case "sk":
 		return prepareSK(text), true
+	case "cz":
+		return prepareCZ(text), true
 	case "gg":
 		return prepareGG(text), true
 	default:
@@ -1478,6 +1480,94 @@ func prepareSK(text string) string {
 
 		}
 		result += "\n" + v
+	}
+
+	return result
+}
+
+// prepareCZ do prepare the .cz domain
+func prepareCZ(text string) string {
+	roleRefs := map[string]string{}
+	roleTokens := map[string]string{
+		"registrant": "Registrant",
+		"admin-c":    "Administrative",
+		"tech-c":     "Technical",
+	}
+
+	for _, v := range strings.Split(text, "\n") {
+		v = strings.TrimSpace(v)
+		if v == "" || strings.HasPrefix(v, "%") {
+			continue
+		}
+		if !strings.Contains(v, ":") {
+			continue
+		}
+
+		vs := strings.SplitN(v, ":", 2)
+		key := strings.ToLower(strings.TrimSpace(vs[0]))
+		value := strings.TrimSpace(vs[1])
+
+		if role, ok := roleTokens[key]; ok && value != "" {
+			roleRefs[role] = value
+		}
+	}
+
+	contactRoles := map[string][]string{}
+	for role, ref := range roleRefs {
+		contactRoles[ref] = append(contactRoles[ref], role)
+	}
+
+	result := ""
+	roles := []string{}
+	inContact := false
+
+	for _, v := range strings.Split(text, "\n") {
+		v = strings.TrimSpace(v)
+
+		if v == "" {
+			inContact = false
+			roles = []string{}
+			continue
+		}
+		if strings.HasPrefix(v, "%") {
+			continue
+		}
+
+		if !strings.Contains(v, ":") {
+			continue
+		}
+
+		vs := strings.SplitN(v, ":", 2)
+		key := strings.TrimSpace(vs[0])
+		value := strings.TrimSpace(vs[1])
+
+		switch strings.ToLower(key) {
+		case "contact":
+			inContact = true
+			roles = contactRoles[value]
+			if len(roles) == 0 {
+				continue
+			}
+			for _, role := range roles {
+				result += fmt.Sprintf("\n%s ID: %s", role, value)
+			}
+			continue
+		case "registrant":
+			result += fmt.Sprintf("\nRegistrant ID: %s", value)
+			continue
+		}
+
+		if inContact {
+			if len(roles) == 0 {
+				continue
+			}
+			for _, role := range roles {
+				result += fmt.Sprintf("\n%s %s: %s", role, key, value)
+			}
+			continue
+		}
+
+		result += fmt.Sprintf("\n%s: %s", key, value)
 	}
 
 	return result
